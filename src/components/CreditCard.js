@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import Cards from "react-credit-cards";
-import "react-credit-cards/es/styles-compiled.css";
+import Cards from "react-credit-cards-2";
+import "react-credit-cards-2/es/styles-compiled.css";
 import styles from "./styles.css";
 import { Box, TextField } from "@mui/material";
 import Card from '@mui/joy/Card';
