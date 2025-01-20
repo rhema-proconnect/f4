@@ -1,6 +1,9 @@
 import {
   registrationStart,
   registrationEnd,
+  confirmEmailStart,
+  confirmEmailEnd,
+  // confirmOtpStart,
   loginStart,
   loginFailure,
   loginSuccess,
@@ -14,6 +17,7 @@ import { openAlert } from "../feature/alertSlice";
 import setBearer from "../utils/setBearer";
 import axiosInstance from "./axiosInstance";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 export const registerUser = (userData) => {
   return axiosInstance.post("/register", userData);
@@ -102,7 +106,7 @@ export const register = async (
         openAlert({
           message: res.data.message,
           severity: "success",
-          nextRoute: "/login",
+          nextRoute: "/confirmEmail",
           duration: 1500,
         })
       );
@@ -120,6 +124,36 @@ export const register = async (
   }
   dispatch(registrationEnd());
 };
+
+export const confirmEmailService = async ({email, verificationCode}, dispatch) =>{
+  dispatch(confirmEmailStart());
+  try {
+    const res = await axiosInstance.post('/users/verify-email', { email, verificationCode });
+    const  message  = res.data.message;
+    // const user = res.data.data
+    // sessionStorage.setItem("token", user);
+    // console.log(user)
+    dispatch(
+      openAlert({
+        message,
+        severity: "success",
+        duration: 500,
+        nextRoute: "/login",
+      })
+    );
+    // return user
+  } catch (error) {
+    dispatch(confirmEmailEnd());
+    dispatch(
+      openAlert({
+        message: error?.response?.data?.errMessage
+          ? error.response.data.errMessage
+          : error.message,
+        severity: "error",
+      })
+    );
+  }
+}
 
 export const login = async ({ email, password }, dispatch) => {
   dispatch(loginStart());
