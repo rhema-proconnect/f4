@@ -37,7 +37,7 @@ import SelfEmployee from '../pages/support/SelfWorker';
 import StudentValid from '../pages/support/StudentValid';
 import SEmployee from '../pages/Profil/SelfEmployee';
 import DetailStudent from '../pages/support/DetailStudent';
-//import CreditCard from '../components/CreditCard';
+import CreditCard from '../components/CreditCard';
 import Monosites from '../pages/Monosites';
 import Mail from '../pages/Mail';
 import Reply from '../pages/Reply';
@@ -45,6 +45,8 @@ import ForgotPass from '../pages/ForgotPass';
 import ResetPass from '../pages/ResetPass';
 import StudentMono from '../pages/support/StudentMono';
 import DetailSdtM from '../pages/support/DetailSdtM';
+import ConfirmEmail from '../pages/ConfirmEmail';
+
 
 const AUTH = 'auth';
 const DASH ='dash';
@@ -72,6 +74,8 @@ export default function Routes() {
         {path:"/users/:id/verify/:token", element:<EmailVerify />},
         {path:"/forgotpass", element:<ForgotPass />},
         {path:"/reset-password/:token", element:<ResetPass />},
+        {path:"/confirmEmail", element:<ConfirmEmail />},
+
         
         {path:"/dash", element:(<Guard><Board /> </Guard>)},
         {path:"/addPage/:id", element:(<Guard><NavBar /><AddPage /></Guard>)},
@@ -105,7 +109,7 @@ export default function Routes() {
         {path:"/detail/sdt/:id", element:(<Guard><NavBar /><DetailStudent /></Guard>)},
         {path:"/simple_users", element:(<Guard><NavBar /><SimpleUsers /></Guard>)},
         {path:"/reply/:id", element:(<Guard><NavBar /><Reply /></Guard>)},
-        //{path:"/credit", element:(<Guard><CreditCard /></Guard>)},
+        {path:"/credit", element:(<Guard><CreditCard /></Guard>)},
         // {
         //     path: "/",
         //     element: (<Guard> <DashbordLayout /> </Guard>), 
