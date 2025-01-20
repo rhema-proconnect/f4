@@ -18,6 +18,12 @@ export const authSlice = createSlice({
         registrationEnd: (state) => {
             state.pending = false;
         },
+        confirmEmailStart: (state) => {
+            state.pending = true;
+        },
+        confirmEmailEnd: (state) => {
+            state.pending = false;
+        },
         loginStart: (state) => {
             state.pending = true;
         },
@@ -66,6 +72,8 @@ export const authSlice = createSlice({
 export const {
     registrationStart,
     registrationEnd,
+    confirmEmailStart,
+    confirmEmailEnd,
     loginStart,
     loginFailure,
     loginSuccess,
