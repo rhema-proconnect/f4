@@ -109,7 +109,7 @@ export default function Routes() {
         {path:"/detail/sdt/:id", element:(<Guard><NavBar /><DetailStudent /></Guard>)},
         {path:"/simple_users", element:(<Guard><NavBar /><SimpleUsers /></Guard>)},
         {path:"/reply/:id", element:(<Guard><NavBar /><Reply /></Guard>)},
-        {path:"/credit", element:(<Guard><CreditCard /></Guard>)},
+        //{path:"/credit", element:(<Guard><CreditCard /></Guard>)},
         // {
         //     path: "/",
         //     element: (<Guard> <DashbordLayout /> </Guard>), 
